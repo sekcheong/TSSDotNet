@@ -539,7 +539,7 @@ namespace PCRandKeys
             var s = srkPublic.unique.ToString();
             var k = (Tpm2bPublicKeyRsa)srkPublic.unique;
             var text = Convert.ToBase64String(k.buffer, 0, k.buffer.Length);
-
+            var data = tpm.Unseal(keyHandle);
              //
              // The caller provides the handle for persistent keys
              // 
@@ -561,6 +561,7 @@ namespace PCRandKeys
             // 
             tpm.EvictControl(TpmRh.Owner, keyHandle, srkHandle);
             Console.WriteLine("SRK is persistent now.");
+            
             Console.WriteLine("\nStorageRootKey sample finished.");
         } // StorageRootKey()
 

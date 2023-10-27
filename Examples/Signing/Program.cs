@@ -182,6 +182,7 @@ namespace Signing
                 Console.WriteLine("Signature: " + BitConverter.ToString(signature.sig));
 
                 var data = tpm[keyAuth].RsaEncrypt(keyHandle, message, null, null);
+
                 // 
                 // Use the TPM library to validate the signature
                 // 
